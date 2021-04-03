@@ -30,12 +30,36 @@ function writePassword() {
   passwordLength = prompt(
     "Enter number of characters to use (Must be between 8-128.)"
   );
-  // Var password = generatePassword();
+  var password = generatePassword();
   // Temporary Password
   var password = "password1";
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+}
+function generatePassword() {
+  // Holding default false values for character selectors
+  let selectUpper = false;
+  let selectLower = false;
+  let selectNumber = false;
+  let selectSpecial = false;
+  let minimumSelectionRequirement = false;
+  let password = "";
+  if (passwordLength >= 8 && passwordLength <= 128) {
+    console.log("criteria accepted");
+
+    // If critera accepted modify selectors according to user input
+    selectUpper = confirm("Include uppercase?");
+    selectLower = confirm("Include lowercase?");
+    selectNumber = confirm("Include numbers?");
+    selectSpecial = confirm("Include special characters?");
+    // Make sure there is at least one character type selected by user
+    if (selectUpper || selectLower || selectNumber || selectSpecial) {
+      minimumSelectionRequirement = true;
+    }
+  } else {
+    alert("criteria rejected");
+  }
 }
 
 // Add event listener to generate button
