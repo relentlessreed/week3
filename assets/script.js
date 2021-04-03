@@ -27,7 +27,12 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  passwordLength = prompt(
+    "Enter number of characters to use (Must be between 8-128.)"
+  );
+  // Var password = generatePassword();
+  // Temporary Password
+  var password = "password1";
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
