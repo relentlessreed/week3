@@ -22,6 +22,47 @@ function getRandomSymbol() {
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
+// Get random character from user based input
+function getCharacter(num) {
+  let choice = "";
+
+  if (num == 0) {
+    choice = getRandomUpper();
+  } else if (num == 1) {
+    choice = getRandomLower();
+  } else if (num == 2) {
+    choice = getRandomNumber();
+  } else if (num == 3) {
+    choice = getRandomSymbol();
+  } else {
+    console.log("Must enter valid number.");
+  }
+  return choice;
+}
+
+// Randomizes character selection
+function randomizeOrder(upper, lower, number, symbol) {
+  let decision = -1;
+  let testDecision = -1;
+
+  while (decision == -1) {
+    testDecision = Math.floor(Math.random() * 4);
+    if (upper && testDecision == 0) {
+      decision = testDecision;
+    }
+    if (lower && testDecision == 1) {
+      decision = testDecision;
+    }
+    if (number && testDecision == 2) {
+      decision = testDecision;
+    }
+    if (symbol && testDecision == 3) {
+      decision = testDecision;
+    }
+  }
+  return decision;
+}
+
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
