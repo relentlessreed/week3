@@ -72,8 +72,6 @@ function writePassword() {
     "Enter number of characters to use (Must be between 8-128.)"
   );
   var password = generatePassword();
-  // Temporary Password
-  var password = "password1";
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
@@ -101,6 +99,18 @@ function generatePassword() {
   } else {
     alert("criteria rejected");
   }
+
+  // If at least one character type was selected, create random password
+  if (minimumSelectionRequirement) {
+    for (i = 0; i < passwordLength; i++) {
+      password += getCharacter(
+        randomizeOrder(selectUpper, selectLower, selectNumber, selectSpecial)
+      );
+    }
+  } else {
+    alert("Select at least one character type!");
+  }
+  return password;
 }
 
 // Add event listener to generate button
