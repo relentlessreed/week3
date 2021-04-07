@@ -103,28 +103,10 @@ function generatePassword() {
   // If at least one character type was selected, create random password
   if (minimumSelectionRequirement) {
     // Booleans for making sure one character of each chosen type is selected
-    let passUpper = false;
-    let passLower = false;
-    let passNumber = false;
-    let passSymbol = false;
     for (i = 0; i < passwordLength; i++) {
-      if (selectUpper && !passUpper) {
-        passUpper = true;
-        password += getCharacter(0);
-      } else if (selectLower && !passLower) {
-        passLower = true;
-        password += getCharacter(1);
-      } else if (selectNumber && !passNumber) {
-        passNumber = true;
-        password += getCharacter(2);
-      } else if (selectSymbol && !passSymbol) {
-        passSymbol = true;
-        password += getCharacter(3);
-      } else {
-        password += getCharacter(
-          randomizeOrder(selectUpper, selectLower, selectNumber, selectSpecial)
-        );
-      }
+      password += getCharacter(
+        randomizeOrder(selectUpper, selectLower, selectNumber, selectSpecial)
+      );
     }
   } else {
     alert("Select at least one character type!");
